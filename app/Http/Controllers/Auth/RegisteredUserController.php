@@ -37,6 +37,24 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        $birth_day = $request->input('old_year') . '-' . str_pad($request->input('old_month'), 2, '0', STR_PAD_LEFT) . '-' . str_pad($request->input('old_day'), 2, '0', STR_PAD_LEFT);
+        $request->merge(['birth_day' => $birth_day]);
+
+        $request->validate([
+        'over_name' => 'required|string|max:10',
+        'under_name' => 'required|string|max:10',
+        'over_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
+        'under_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
+        'mail_address' => 'required|email|unique:users,mail_address|max:100',
+        'sex' => 'required|in:1,2,3',
+        'old_year' => 'required|numeric',
+        'old_month' => 'required|numeric',
+        'old_day' => 'required|numeric',
+        'birth_day' => 'date|after_or_equal:2000-01-01|before_or_equal:today',
+        'role' => 'required|in:1,2,3,4',
+        'password' => 'required|between:8,30|confirmed',
+        ]);
+
         DB::beginTransaction();
         try{
             $old_year = $request->old_year;
