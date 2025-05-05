@@ -133,7 +133,9 @@ return [
         'password' => 'パスワード',
         'post_title' => 'タイトル',
         'post_body' => '投稿内容',
-        'comment' => 'コメント'
+        'comment' => 'コメント',
+        'main_category_name' => 'メインカテゴリー',
+        'sub_category_name' => 'サブカテゴリー',
     ],
 
 ];

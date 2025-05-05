@@ -4,20 +4,12 @@
     <div class="m-3 detail_container">
       <div class="p-3">
         <div class="detail_inner_head">
-          @error('post_title')
-          <div class="validation_error">
-              <ul>
-                      <li>{{ $message }}</li>
-              </ul>
-          </div>
-          @enderror
-          @error('post_body')
-          <div class="validation_error">
-              <ul>
-                      <li>{{ $message }}</li>
-              </ul>
-          </div>
-          @enderror
+          @if($errors->first('post_title'))
+          <span class="error_message">{{ $errors->first('post_title') }}</span>
+          @endif
+          @if($errors->first('post_body'))
+          <span class="error_message">{{ $errors->first('post_body') }}</span>
+          @endif
           <div>
           </div>
           @if($post->user_id == Auth::user()->id)
@@ -57,13 +49,9 @@
   <div class="w-50 p-3">
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
-        @error('comment')
-        <div class="validation_error">
-            <ul>
-                    <li>{{ $message }}</li>
-            </ul>
-        </div>
-        @enderror
+        @if($errors->first('comment'))
+        <span class="error_message">{{ $errors->first('comment') }}</span>
+        @endif
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">

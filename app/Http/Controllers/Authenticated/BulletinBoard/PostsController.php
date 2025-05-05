@@ -45,12 +45,13 @@ class PostsController extends Controller
 
     public function postInput(){
         $main_categories = MainCategory::get();
-        return view('authenticated.bulletinboard.post_create', compact('main_categories'));
+        $sub_categories = SubCategory::get();
+        return view('authenticated.bulletinboard.post_create', compact('main_categories', 'sub_categories'));
     }
 
     public function postCreate(PostFormRequest $request){
         $request->validate([
-            'post_category_id' => 'required|',
+            'post_category_id' => 'required|exists:sub_categories,id',
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:2000',
         ]);
@@ -59,6 +60,8 @@ class PostsController extends Controller
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+        $post->subCategories()->attach($request->post_category_id);
+
         return redirect()->route('post.show');
     }
 
@@ -80,12 +83,23 @@ class PostsController extends Controller
     }
     // メインカテゴリー
     public function mainCategoryCreate(Request $request){
+        $request->validate([
+            'main_category_name' => 'required|max:100|string|unique:main_categories,main_category'
+        ]);
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
     // サブカテゴリー
     public function subCategoryCreate(Request $request){
-
+        $request->validate([
+            'main_category_id' => 'required|exists:main_categories,id',
+            'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
+        ]);
+        SubCategory::create([
+            'main_category_id' => $request->main_category_id,
+            'sub_category' => $request->sub_category_name
+        ]);
+        return redirect()->route('post.input');
     }
 
     public function commentCreate(Request $request){
