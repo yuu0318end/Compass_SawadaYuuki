@@ -39,7 +39,9 @@
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
       <!-- サブカテゴリー追加 -->
-      <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+      <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">
+        {{ csrf_field() }}
+      </form>
     </div>
   </div>
   @endcan

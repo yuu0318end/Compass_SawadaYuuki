@@ -131,6 +131,9 @@ return [
         'birth_day' => '生年月日',
         'role' => '役職',
         'password' => 'パスワード',
+        'post_title' => 'タイトル',
+        'post_body' => '投稿内容',
+        'comment' => 'コメント'
     ],
 
 ];

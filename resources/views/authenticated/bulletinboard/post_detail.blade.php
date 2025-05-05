@@ -4,14 +4,29 @@
     <div class="m-3 detail_container">
       <div class="p-3">
         <div class="detail_inner_head">
+          @error('post_title')
+          <div class="validation_error">
+              <ul>
+                      <li>{{ $message }}</li>
+              </ul>
+          </div>
+          @enderror
+          @error('post_body')
+          <div class="validation_error">
+              <ul>
+                      <li>{{ $message }}</li>
+              </ul>
+          </div>
+          @enderror
           <div>
           </div>
+          @if($post->user_id == Auth::user()->id)
           <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            <span class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+            <a class="btn btn-danger" href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('この投稿をを削除します。よろしいでしょうか？')">削除</a>
           </div>
+          @endif
         </div>
-
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
@@ -42,6 +57,13 @@
   <div class="w-50 p-3">
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
+        @error('comment')
+        <div class="validation_error">
+            <ul>
+                    <li>{{ $message }}</li>
+            </ul>
+        </div>
+        @enderror
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">

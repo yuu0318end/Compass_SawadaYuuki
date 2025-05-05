@@ -49,6 +49,11 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
+        $request->validate([
+            'post_category_id' => 'required|',
+            'post_title' => 'required|string|max:100',
+            'post_body' => 'required|string|max:2000',
+        ]);
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
@@ -58,6 +63,10 @@ class PostsController extends Controller
     }
 
     public function postEdit(Request $request){
+        $request->validate([
+            'post_title' => 'required|string|max:100',
+            'post_body' => 'required|string|max:2000',
+        ]);
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,
@@ -69,12 +78,20 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
+    // メインカテゴリー
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
+    // サブカテゴリー
+    public function subCategoryCreate(Request $request){
+
+    }
 
     public function commentCreate(Request $request){
+        $request->validate([
+            'comment' => 'required|string|max:250'
+            ]);
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
