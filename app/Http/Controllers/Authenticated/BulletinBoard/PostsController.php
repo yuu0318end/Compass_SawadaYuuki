@@ -17,16 +17,30 @@ class PostsController extends Controller
 {
     public function show(Request $request){
         $posts = Post::with('user', 'postComments')->get();
-        $categories = MainCategory::get();
+        $mainCategories = MainCategory::with('subCategories')->get();
+        $subCategories = SubCategory::get();
         $like = new Like;
         $post_comment = new Post;
+        $query = Post::with('user', 'postComments');
+
         if(!empty($request->keyword)){
-            $posts = Post::with('user', 'postComments')
-            ->where('post_title', 'like', '%'.$request->keyword.'%')
-            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+            $matchedSubCategory = SubCategory::where('sub_category', $request->keyword)->first();
+            if ($matchedSubCategory) {
+                $query->whereHas('subCategories', function ($q) use ($matchedSubCategory){
+                    $q->where('sub_categories.id', $matchedSubCategory->id);
+                });
+            } else {
+                $query->where(function ($q) use ($request){
+                    $q->where('post_title', 'like', '%' . $request->keyword . '%')
+                    ->orWhere('post', 'like', '%' . $request->keyword . '%');
+                });
+            }
+            $posts = $query->get();
         }else if($request->category_word){
-            $sub_category = $request->category_word;
-            $posts = Post::with('user', 'postComments')->get();
+            $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories', function ($q) use ($request){
+                $q->where('sub_categories.id', $request->category_word);
+            })->get();
         }else if($request->like_posts){
             $likes = Auth::user()->likePostId()->get('like_post_id');
             $posts = Post::with('user', 'postComments')
@@ -35,7 +49,8 @@ class PostsController extends Controller
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
         }
-        return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
+
+        return view('authenticated.bulletinboard.posts', compact('posts', 'mainCategories', 'subCategories', 'like', 'post_comment'));
     }
 
     public function postDetail($post_id){
