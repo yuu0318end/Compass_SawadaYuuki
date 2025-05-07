@@ -5,10 +5,13 @@
       <p class="mb-0">カテゴリー</p>
       <form action="{{ route('post.create') }}" method="post" id="postCreate">
         @csrf
-        <select class="w-100" name="post_category_id">
+        <select class="w-100" name="post_categoryId">
           <option value=""></option>
+          @foreach ($main_categories as $main_category)
+            <option value="main_{{ $main_category->id }}">{{ $main_category->main_category }}</option>
+          @endforeach
           @foreach ($sub_categories as $sub_category)
-            <option value="{{ $sub_category->id }}">{{ $sub_category->sub_category }}</option>
+            <option value="sub_{{ $sub_category->id }}">{{ $sub_category->sub_category }}</option>
           @endforeach
         </select>
         </div>

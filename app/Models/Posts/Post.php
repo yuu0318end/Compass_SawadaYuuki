@@ -30,6 +30,10 @@ class Post extends Model
     public function subCategories(){
         return $this->belongsToMany('App\Models\Categories\SubCategory', 'post_sub_categories', 'post_id', 'sub_category_id');
     }
+    public function mainCategories(){
+        return $this->belongsToMany('App\Models\Categories\MainCategory', 'post_main_categories', 'post_id', 'main_category_id');
+    }
+
     // いいね数
     public function likeCounts($post_id){
         return $this->likes()->get()->count();

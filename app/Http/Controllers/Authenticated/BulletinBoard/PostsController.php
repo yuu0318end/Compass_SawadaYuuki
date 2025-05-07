@@ -51,7 +51,6 @@ class PostsController extends Controller
 
     public function postCreate(PostFormRequest $request){
         $request->validate([
-            'post_category_id' => 'required|exists:sub_categories,id',
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:2000',
         ]);
@@ -60,8 +59,12 @@ class PostsController extends Controller
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
-        $post->subCategories()->attach($request->post_category_id);
-
+        [$type, $categoryId] = explode('_', $request->post_categoryId);
+        if ($type === 'main') {
+            $post->mainCategories()->attach($categoryId);
+        } elseif ($type === 'sub') {
+            $post->subCategories()->attach($categoryId);
+        }
         return redirect()->route('post.show');
     }
 

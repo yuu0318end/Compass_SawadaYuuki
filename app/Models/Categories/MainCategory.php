@@ -16,4 +16,8 @@ class MainCategory extends Model
         return $this->hasMany('App\Models\Categories\SubCategory');
     }
 
+    public function posts(){
+        return $this->belongsToMany('App\Models\Posts\Post', 'post_main_categories', 'main_category_id', 'post_id');
+    }
+
 }
