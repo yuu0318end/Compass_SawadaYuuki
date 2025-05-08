@@ -21,6 +21,14 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 /* サイドバー */
 .sidebar {
   width: 150px;
@@ -112,8 +120,20 @@ li {
 }
 
 /* 掲示板 */
-.sub_categories {
+.post {
+    border-radius: 7px;
+    padding: 3px;
+    background: #03AAD2;
+    font-size: 15px;
+    color: #FFF;
+    padding: 5px 0;
+    margin: 10px 0;
+}
 
+.post a {
+  display: flex;
+  justify-content: center;
+  color: #fff;
 }
 
 .post_create_area {
@@ -234,19 +254,91 @@ li {
   color: #FFF;
 }
 
-.category_btn {
-  font-size: 12px;
+.category_btn1 {
+  font-size: 15px;
   border-radius: 5px;
-  padding: 0 5px;
+  padding: 8px 18px;
+  margin-top: 10px;
   border: none;
-  background: #999;
+  background: #ff99a8;
   color: #FFF;
+  cursor: pointer;
+}
+
+.category_btn2 {
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 8px 18px;
+  margin-top: 10px;
+  border: none;
+  background: #e6b85c;
+  color: #FFF;
+  cursor: pointer;
 }
 
 .main_categories span,
 .sub_categories li input {
   list-style: none;
   cursor: pointer;
+}
+
+.other_area {
+  margin-top: 25px;
+  margin-right: 100px;
+}
+
+.category{
+  margin-top: 20px;
+}
+
+.main_categories{
+  font-size: 18px;
+  border-bottom: solid 1px #c0c0c0;
+  width: 100%;
+  margin-top: 15px;
+  position: relative;
+}
+
+[class^="category_num"]{
+  font-size: 15px;
+  display: none;
+  border-bottom: solid 1px #c0c0c0;
+  width: 80%;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.sub_categories{
+  color: #494949;
+  text-decoration: none;
+}
+.sub_categories:hover{
+  text-decoration: none;
+  color: #494949;
+}
+
+.arrow {
+  margin-left: 30px;
+}
+
+.arrow:after{
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 20%;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px #494949;
+  border-right: solid 2px #494949;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.arrow.open:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 45%;
 }
 
 /* ユーザー検索 */
