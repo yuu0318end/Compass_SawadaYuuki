@@ -308,9 +308,11 @@ a:hover {
   margin-top: 15px;
   margin-left: 10px;
 }
+
 .sub_categories{
   color: #494949;
   text-decoration: none;
+  display: block;
 }
 .sub_categories:hover{
   text-decoration: none;
