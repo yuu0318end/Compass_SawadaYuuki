@@ -119,6 +119,10 @@ a:hover {
   width: 60%;
 }
 
+.modal_text{
+  margin-left: 25%;
+}
+
 /* 掲示板 */
 .post {
     border-radius: 7px;

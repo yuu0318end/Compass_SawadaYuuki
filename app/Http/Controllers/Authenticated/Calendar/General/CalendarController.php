@@ -35,4 +35,17 @@ class CalendarController extends Controller
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
+
+    public function delete(Request $request){
+        $reserveId = $request->input('delete_reserve'); // モーダルから送られた予約IDを取得
+        $userId = Auth::id(); // 現在ログイン中のユーザーIDを取得
+        $setting = ReserveSettings::find($reserveId);
+        if($setting) {
+            // ユーザーの予約を中間テーブルから削除
+            $setting->users()->detach($userId);
+            // 空き枠を1増やす
+            $setting->increment('limit_users');
+        }
+        return redirect()->route('calendar.general.show', ['user_id' => $userId]);
+    }
 }
