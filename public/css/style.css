@@ -73,9 +73,11 @@ a:hover {
 }
 
 .day_part {
-  color: #494949;
+  color: #007bff !important;
   font-size: 12px;
   margin: 0;
+  cursor: pointer;
+  display: block;
 }
 
 .day_part2 {
