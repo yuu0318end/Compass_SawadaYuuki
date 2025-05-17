@@ -75,6 +75,13 @@ a:hover {
 .day_part {
   color: #494949;
   font-size: 12px;
+  margin: 0;
+}
+
+.day_part2 {
+  color: #494949;
+  font-size: 12px;
+  margin-left: 20px;
 }
 
 .adjust-table {
