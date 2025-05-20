@@ -9,11 +9,15 @@
           <th class="w-25">名前</th>
           <th class="w-25">場所</th>
         </tr>
-        <tr class="text-center">
-          <td class="w-25"></td>
-          <td class="w-25"></td>
-          <td class="w-25">リモート</td>
-        </tr>
+        @foreach($reservePersons as $reservePerson)
+          @foreach($reservePerson->users as $user)
+            <tr class="text-center">
+              <td class="w-25">{{ $user->id }}</td>
+              <td class="w-25">{{ $user->over_name }}{{ $user->under_name }}</td>
+              <td class="w-25">リモート</td>
+            </tr>
+          @endforeach
+        @endforeach
       </table>
     </div>
   </div>
