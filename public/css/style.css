@@ -12,6 +12,9 @@
 }
 
 /* body */
+.guest_body {
+  background: #f0f8ff;
+}
 .all_content {
   background: #ECF1F6;
 }
@@ -27,6 +30,61 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+/* ログイン */
+.login_wrapper {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.login_logo {
+  text-align: center;
+}
+
+.login_logo img {
+  width: 150px;
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+.text-center{
+  margin-bottom: 20px;
+}
+
+/* 新規登録 */
+.register_wrapper {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  width: 30%;
+  padding: 10px 40px;
+}
+
+.register_sex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.register_birthday {
+  text-align: center;
+}
+
+.register_select {
+  border: none;
+  border-bottom: 1px solid #4a90e2;
+  background: transparent;
+  padding: 4px 24px 4px 0;
+  font-size: 16px;
+  margin: 0 8px 16px 0;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+.register_role {
+  display: flex;
+  justify-content: space-around;
 }
 
 /* サイドバー */
