@@ -13,7 +13,7 @@
 
 /* body */
 .guest_body {
-  background: #f0f8ff;
+  background: #ECF1F6;
 }
 .all_content {
   background: #ECF1F6;
@@ -31,6 +31,10 @@ a {
 a:hover {
   text-decoration: none;
 }
+img {
+  width: 20px;
+  height: 20px;
+}
 /* ログイン */
 .login_wrapper {
     background-color: #fff;
@@ -44,6 +48,7 @@ a:hover {
 
 .login_logo img {
   width: 150px;
+  height: 50px;
   margin-top: 150px;
   margin-bottom: 50px;
 }
@@ -89,14 +94,21 @@ a:hover {
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  position: fixed;
+  width: 190px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
 }
 
+.sidebar_items {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
 .main-container {
   width: 100%;
+  margin-left: 190px;
 }
 
 .sidebar p a {
@@ -107,6 +119,7 @@ a:hover {
 .user_status {
   border-radius: 10px;
   background: #FFF;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* スクール予約関連 */
@@ -157,6 +170,14 @@ a:hover {
 
 .adjust-table-btn {
   width: 70%;
+}
+
+.calendar_btn {
+  margin-top: 15px;
+}
+
+.admin_calendar {
+  width: 90%;
 }
 
 /* モーダル */
@@ -245,6 +266,38 @@ a:hover {
   color: red;
 }
 
+.search-box {
+  display: flex;
+  width: 250px;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #ECF1F6;
+  margin:15px 0;
+}
+
+.post_search {
+  border: none;
+  padding: 10px;
+  flex: 1;
+  font-size: 14px;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  background-color: transparent;
+}
+
+.post_search_btn {
+  background-color: #03AAD2;
+  color: #fff;
+  border: none;
+  padding: 0px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.3s ease;
+}
+
 /* 掲示板 詳細画面 */
 .contributor {
   font-size: 12px;
@@ -327,8 +380,7 @@ a:hover {
 .category_btn1 {
   font-size: 15px;
   border-radius: 5px;
-  padding: 8px 18px;
-  margin-top: 10px;
+  padding: 8px 16px;
   border: none;
   background: #ff99a8;
   color: #FFF;
@@ -338,8 +390,7 @@ a:hover {
 .category_btn2 {
   font-size: 15px;
   border-radius: 5px;
-  padding: 8px 18px;
-  margin-top: 10px;
+  padding: 8px 16px;
   border: none;
   background: #e6b85c;
   color: #FFF;

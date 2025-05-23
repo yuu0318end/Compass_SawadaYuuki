@@ -20,7 +20,7 @@ class CalendarView{
     $html[] = '<div class="calendar text-center">';
     $html[] = '<table class="table">';
     $html[] = '<thead>';
-    $html[] = '<tr>';
+    $html[] = '<tr class="border">';
     $html[] = '<th>月</th>';
     $html[] = '<th>火</th>';
     $html[] = '<th>水</th>';
@@ -41,9 +41,9 @@ class CalendarView{
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="past-day calendar-td '.$day->getClassName().'">';
+          $html[] = '<td class="border past-day calendar-td '.$day->getClassName().'">';
         }else{
-          $html[] = '<td class="calendar-td '.$day->getClassName().'">';
+          $html[] = '<td class="border calendar-td '.$day->getClassName().'">';
         }
         $html[] = $day->render();
 

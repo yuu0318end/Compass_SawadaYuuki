@@ -15,20 +15,42 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     </head>
     <body class="all_content">
         <div class="d-flex">
             <div class="sidebar">
-                <p><a href="{{ route('top.show') }}">トップ</a></p>
-                <p><a href="/logout">ログアウト</a></p>
-                <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+                <p class="sidebar_items">
+                    <img src="{{ asset('image/home_icon.png') }}" alt="">
+                    <a href="{{ route('top.show') }}">トップ</a>
+                </p>
+                <p class="sidebar_items">
+                    <img src="{{ asset('image/logout_icon.png') }}" alt="">
+                    <a href="/logout">ログアウト</a>
+                </p>
+                <p class="sidebar_items">
+                    <img src="{{ asset('image/calendar_icon.png') }}" alt="">
+                    <a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a>
+                </p>
                 @if(in_array(Auth::user()->role, [1, 2, 3]))
-                <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                <p class="sidebar_items">
+                    <img src="{{ asset('image/calendar_check_icon.png') }}" alt="">
+                    <a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a>
+                </p>
+                <p class="sidebar_items">
+                    <img src="{{ asset('image/calendar_new_icon.png') }}" alt="">
+                    <a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a>
+                </p>
                 @endif
-                <p><a href="{{ route('post.show') }}">掲示板</a></p>
-                <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+                <p class="sidebar_items">
+                    <img src="{{ asset('image/message_icon.png') }}" alt="">
+                    <a href="{{ route('post.show') }}">掲示板</a>
+                </p>
+                <p class="sidebar_items">
+                    <img src="{{ asset('image/user_icon.png') }}" alt="">
+                    <a href="{{ route('user.show') }}">ユーザー検索</a>
+                </p>
             </div>
             <div class="main-container">
                 {{ $slot }}

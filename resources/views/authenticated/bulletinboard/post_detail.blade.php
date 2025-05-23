@@ -1,7 +1,7 @@
 <x-sidebar>
 <div class="vh-100 d-flex">
   <div class="w-50 mt-5">
-    <div class="m-3 detail_container">
+    <div class="m-3 detail_container" style="border-radius:10px; background:#FFF;">
       <div class="p-3">
         <div class="detail_inner_head">
           @if($errors->first('post_title'))
@@ -12,8 +12,12 @@
           @endif
           <div>
           </div>
+
+        </div>
+        <div style="margin-bottom:10px;">
+          <span class="category_box2">{{ $post->subCategories->first()?->sub_category ?? '' }}</span>
           @if($post->user_id == Auth::user()->id)
-          <div>
+          <div class="text-right" style="display:inline;margin-left:70%;">
             <span class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
             <a class="btn btn-danger" href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('この投稿をを削除します。よろしいでしょうか？')">削除</a>
           </div>
@@ -47,7 +51,7 @@
     </div>
   </div>
   <div class="w-50 p-3">
-    <div class="comment_container border m-5">
+    <div class="comment_container border m-5" style="border-radius:10px; background:#FFF;">
       <div class="comment_area p-3">
         @if($errors->first('comment'))
         <span class="error_message">{{ $errors->first('comment') }}</span>
@@ -55,7 +59,9 @@
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
-        <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        <div class="text-right">
+          <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        </div>
         <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
       </div>
     </div>
