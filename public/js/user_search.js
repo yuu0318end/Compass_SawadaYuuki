@@ -6,6 +6,7 @@ $(function () {
   });
 
   $('.subject_edit_btn').click(function () {
-    $('.subject_inner').slideToggle();
+    $(this).next('.arrow2').toggleClass('open');
+    $(this).nextAll('.subject_inner').slideToggle();
   });
 });
