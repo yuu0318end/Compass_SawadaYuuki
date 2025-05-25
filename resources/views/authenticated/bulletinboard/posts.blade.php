@@ -14,9 +14,9 @@
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fa-solid fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}" style="margin-left:4px;">{{ $post->likeCounts($post->id) }}</span></p>
+            <p class="m-0"><i class="fa-solid fa-heart un_like_btn" style="color:#E2254D" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}" style="margin-left:4px;">{{ $post->likeCounts($post->id) }}</span></p>
             @else
-            <p class="m-0"><i class="fa-regular fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}" style="margin-left:4px">{{ $post->likeCounts($post->id) }}</span></p>
+            <p class="m-0"><i class="fa-regular fa-heart like_btn" style="color:#a9a9a9" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}" style="margin-left:4px">{{ $post->likeCounts($post->id) }}</span></p>
             @endif
           </div>
         </div>

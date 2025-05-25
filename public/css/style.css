@@ -261,6 +261,14 @@ img {
   color: #E2254D;
 }
 
+.fa-heart.un_like_btn {
+  color: #E2254D !important;
+}
+
+.fa-heart.like_btn {
+  color: #a9a9a9 !important;
+}
+
 .error_message {
   font-size: 12px;
   color: red;
@@ -622,4 +630,47 @@ img {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   top: 45%;
+}
+
+/* 予約詳細確認画面 */
+.detail_container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  padding: 7px;
+}
+
+.detail_wrapper {
+  text-align: center;
+}
+
+.detail_label {
+  display: flex;
+  justify-content: space-between;
+  background-color: #03AAD2;
+  color: #fff;
+  width: 60vw;
+  height: 25px;
+  margin-bottom: 0;
+  padding-left: 40px;
+}
+
+.detail_items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  width: 60vw;
+  height: 40px;
+  padding-left: 40px;
+
+}
+
+.detail_items:nth-child(even) {
+  background-color: #eaf8fd;
+  border: solid 1px #f5f5f5;
+}
+
+.detail_items:nth-child(odd) {
+  background-color: #ffffff;
 }

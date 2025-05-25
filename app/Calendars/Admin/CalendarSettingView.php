@@ -29,7 +29,7 @@ class CalendarSettingView{
     $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
-    $html[] = '<tbody>';
+    $html[] = '<tbody class="calendar_setting_wrapper">';
     $weeks = $this->getWeeks();
 
     foreach($weeks as $week){
