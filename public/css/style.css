@@ -28,9 +28,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: none;
-}
 img {
   width: 20px;
   height: 20px;
@@ -180,6 +177,10 @@ img {
   width: 90%;
 }
 
+.table {
+  width: 75% !important;
+}
+
 /* モーダル */
 .modal {
   display: none;
@@ -219,12 +220,22 @@ img {
     color: #FFF;
     padding: 5px 0;
     margin: 10px 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.post:hover {
+  background-color: #028ab0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .post a {
   display: flex;
   justify-content: center;
   color: #fff;
+}
+
+.post a:hover {
+  text-decoration: none;
 }
 
 .post_create_area {
@@ -312,7 +323,14 @@ img {
   cursor: pointer;
   border-radius: 0 5px 5px 0;
   transition: background-color 0.3s ease;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+.post_search_btn:hover {
+  background-color: #028ab0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 
 /* 掲示板 詳細画面 */
 .contributor {
@@ -401,6 +419,12 @@ img {
   background: #ff99a8;
   color: #FFF;
   cursor: pointer;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.category_btn1:hover {
+  background-color: #e0667d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .category_btn2 {
@@ -411,6 +435,12 @@ img {
   background: #e6b85c;
   color: #FFF;
   cursor: pointer;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.category_btn2:hover {
+  background-color: #cfa134;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .main_categories span,
@@ -546,13 +576,24 @@ img {
   margin: 10px 0;
   border: none;
   cursor: pointer;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+.search_btn:hover {
+  background-color: #028ab0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 
 .reset_btn {
   border: none;
   background-color: none;
   color: #03AAD2;
   cursor: pointer;
+}
+
+.reset_btn:hover {
+  text-decoration: underline;
 }
 
 .subject_edit_btn {
