@@ -92,24 +92,43 @@ img {
 /* サイドバー */
 .sidebar {
   position: fixed;
-  width: 170px;
+  width: 180px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
 }
 
 .sidebar_items {
-  margin-top: 10px;
-  margin-left: 5px;
+  display: block;
+  margin: 0;
+  margin-left: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .main-container {
   width: 100%;
-  margin-left: 170px;
+  margin-left: 180px;
 }
 
-.sidebar p a {
+.sidebar a span {
   color: #FFF;
+  transition: color 0.3s;
+}
+
+.sidebar p a:hover {
+  text-decoration: none;
+}
+
+.sidebar_items:hover {
+  text-decoration: none;
+  background-color: #027fa3;
+  padding-left: 15px;
+}
+
+.sidebar_items:hover a {
+  color: #ffffff;
 }
 
 /* トップページ */
